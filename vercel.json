@@ -1,13 +1,24 @@
 {
-    "builds": [{
-        "src": "stpa/wsgi.py",
-        "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
-    }],
+    "builds": [
+        {
+            "src": "stpa/wsgi.py",
+            "use": "@vercel/python",
+            "config": {
+                "maxLambdaSize": "15mb",
+                "runtime": "python3.9"
+            }
+        }
+    ],
     "routes": [
         {
             "src": "/(.*)",
             "dest": "stpa/wsgi.py"
         }
-    ]
+    ],
+    "build": {
+        "env": {
+            "MYSQLCLIENT_CFLAGS": "-I/usr/include/mysql",
+            "MYSQLCLIENT_LDFLAGS": "-L/usr/lib/mysql -lmysqlclient"
+        }
+    }
 }
