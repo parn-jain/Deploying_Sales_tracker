@@ -15,10 +15,5 @@
             "dest": "stpa/wsgi.py"
         }
     ],
-    "build": {
-        "env": {
-            "MYSQLCLIENT_CFLAGS": "-I/usr/include/mysql",
-            "MYSQLCLIENT_LDFLAGS": "-L/usr/lib/mysql -lmysqlclient"
-        }
-    }
+    "buildCommand": "./install_system_dependencies.sh && pip install -r requirements.txt"
 }
